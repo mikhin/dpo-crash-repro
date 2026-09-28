@@ -2,6 +2,8 @@
 
 A `performance-observer` report reaches the endpoint when the tab is closed, but not when the renderer crashes, even after the crashed tab is reloaded or closed. The explainer's [use case 2](https://github.com/explainers-by-googlers/declarative-performance-observer#use-case-2-measuring-application-journeys-terminated-by-oom-crashes) expects it to.
 
+Tracked in [crbug.com/558351483](https://issues.chromium.org/issues/558351483).
+
 ## Run
 
 Node 22+, Chrome 154+ (or Chrome for Testing), openssl.
