@@ -1,0 +1,14 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>DPO crash repro</title>
+<p>Score: <output id="value">0</output></p>
+<button id="score">performance.mark("score")</button>
+<script>
+  let score = 0;
+
+  document.querySelector("#score").onclick = () => {
+    score += 1;
+    performance.mark("score", { detail: { score } });
+    document.querySelector("#value").value = score;
+  };
+</script>

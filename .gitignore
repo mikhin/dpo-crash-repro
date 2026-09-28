@@ -1,0 +1,4 @@
+certs/
+reports.jsonl
+*.log
+crbug-draft.txt
