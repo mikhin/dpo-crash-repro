@@ -4,6 +4,21 @@ A `performance-observer` report reaches the endpoint when the tab is closed, but
 
 Tracked in [crbug.com/558351483](https://issues.chromium.org/issues/558351483).
 
+## Fixed in Chrome 157
+
+Two changes merged in October 2026: [flush the observer before the reporting source is removed](https://chromium-review.googlesource.com/c/chromium/src/+/8506176) (157.0.8088) and [send reports on RenderFrameHost destruction](https://chromium-review.googlesource.com/c/chromium/src/+/8513917) (157.0.8089).
+
+Checked on 2026-10-09 with Chrome for Testing 157.0.8093.0 against Chrome 154.0.8037.98, macOS arm64, headless:
+
+| Scenario | 157.0.8093.0 | 154.0.8037.98 |
+|---|---|---|
+| `crash-then-reload` | report in 2.5 s | none in 30 s |
+| `crash-then-close` | report in 2.5 s | none in 30 s |
+| `console-oom` | report in 3.5 s | none in 30 s |
+| `crash-probe` | report in 4.6 s | none in 30 s |
+
+The report carries every mark made before the crash plus a new `session-end` entry.
+
 ## Run
 
 Node 22+, Chrome 154+ (or Chrome for Testing), openssl.
