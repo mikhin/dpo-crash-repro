@@ -45,4 +45,4 @@ CHROME=/path/to/chrome node repro.mjs         # another Chrome build
 
 The probes print the sample count of `DeclarativePerformanceObserver.PeakBufferSize` at each step. With `EXTRA_FLAGS=--disable-features=BackForwardCache`, `navigate-probe` shows the count going up by one on navigation and the report arriving. `crash-probe` shows the count unchanged by the crash, going up by one only when the crashed tab navigates away, and no report.
 
-Seen on Chrome for Testing 156.0.8076.0, macOS arm64, headless and headed. `crash-then-reload` and `crash-then-close` also give no report on 154.0.8037.57.
+Seen on Chrome for Testing 156.0.8076.0, macOS arm64, headless and headed. On 154.0.8037.98 `close` gives no report either (three runs, headed and headless); `crash-then-reload` and `crash-then-close` also give no report on 154.0.8037.57.
